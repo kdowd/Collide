@@ -11,7 +11,18 @@ const int screenHeight = 600;
 
 const int MAX_COLORS_COUNT = 21;
 
-class Paddle {
+class Bullet {
+public:
+	Bullet(int b) {
+		cout << "new bullet" << endl;
+	}
+
+	void fire() {
+		cout << "fire bullet" << endl;
+	}
+};
+
+class Paddle : public Bullet {
 
 public:
 	Vector2 v{};
@@ -20,7 +31,7 @@ public:
 	int speed = 6;
 
 
-	Paddle(int x, int y) {
+	Paddle(int x, int y) : Bullet(3) {
 
 		v.x = x;
 		v.y = y;
@@ -48,7 +59,10 @@ public:
 		if (IsKeyDown(KEY_DOWN)) v.y += speed;
 
 		if (IsKeyDown(KEY_SPACE)) {
-			cout << "fire";
+			Bullet b(5);
+			b.fire();
+
+
 		}
 	}
 
